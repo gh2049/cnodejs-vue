@@ -1,7 +1,7 @@
 <template>
 	<div class="header">
 		<h1 style="display:none">cnodejs</h1>
-		<img src="//o4j806krb.qnssl.com/public/images/cnodejs_light.svg">
+		<img src="../images/cnodejs.svg">
 	</div>
 </template>
 

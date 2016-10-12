@@ -4,9 +4,10 @@ import App from 'components/app.vue';
 import Routers from './router';
 import Env from './config/env';
 import VueResource from 'vue-resource';
-import { fromNow } from './filters/filter';
+import { fromNow,getTab } from './filters/filter';
 
 Vue.filter('fromNow', fromNow)
+Vue.filter('getTab', getTab)
 
 Vue.use(VueResource)
 

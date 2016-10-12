@@ -114,10 +114,13 @@
                 a {
                     color: initial;
                 }
+                span {
+
+                }
             }
             .last_reply_time{
                 font-size:12px;
-                min-width : 40px;
+                min-width : 60px;
             }
         }    
     }

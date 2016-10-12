@@ -20,13 +20,15 @@
 	}
 </style>
 <template>
+	<div v-if="show">
+		
 	<header>
 		<h2 class="topic_header">
 			{{topic.title}}
 		</h2>
 		<div>
 			<span>
-				发布于 {{topic.create_at}} (小时)前
+				发布于 {{topic.create_at | fromNow}} 前
 			</span>
 			<span> 
 				作者 {{topic.author ? topic.author.loginname : ''}}
@@ -49,7 +51,7 @@
 				<div>
 					<img :src="reply.author.avatar_url" alt="" class="avatar">
 					<span class="reply_msg">
-						{{reply.author.loginname}} {{$index+1}}楼 创建时间{{reply.create_at}}
+						{{reply.author.loginname}} {{$index+1}}楼 回复 {{reply.create_at | fromNow}}以前
 					</span>	
 					
 				</div>
@@ -59,6 +61,7 @@
 			</li>
 		</ul>
 	</div>
+	</div>
 </template>
 <script>
 	export default {
@@ -66,12 +69,13 @@
 			let vm = this
 			return {
 				topicId : 'transition.from.query',
-				topic : {}
+				topic : {},
+				show : false
 			}
 		},
 		methods : {
 			getLength () {
-				return this.topic.replies?this.topic.replies.length : 0
+				return this.topic.replies?this.topic.replies.length : ''
 			}
 		},
 		route : {
@@ -82,6 +86,7 @@
 					.then (topicContent => {
 						if(topicContent && topicContent.data){
 	                		vm.topic = topicContent.data.data
+	                		vm.show = true
 	                		sessionStorage.topic = JSON.stringify(vm.topic)
 	                    }
 	                    else{

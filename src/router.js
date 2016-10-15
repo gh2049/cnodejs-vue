@@ -6,8 +6,13 @@ const routers = {
     },
     '/topic/:id' : {
     	 name:'topic',
-         component: function(resolve){
+         component (resolve){
             require(['./views/topic.vue'],resolve);
+        }
+    },
+    '/login' : {
+         component (resolve){
+            require(['./views/login.vue'],resolve);
         }
     }
 };

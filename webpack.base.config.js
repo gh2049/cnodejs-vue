@@ -1,6 +1,3 @@
-/**
- * Created by aresn on 16/7/5.
- */
 
 var path = require('path');
 var webpack = require('webpack');

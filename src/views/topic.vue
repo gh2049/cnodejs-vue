@@ -37,7 +37,7 @@
 				{{topic.visit_count}}次浏览
 			</span>
 			<span>
-				来自{{topic.tab}}
+				来自 {{topic.tab | getTab}}
 			</span>
 		</div>
 	</header>

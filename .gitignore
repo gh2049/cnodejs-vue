@@ -10,3 +10,4 @@ src/config/env.js
 /index.html
 /index_prod.html
 /AccessToken.js
+.jshintrc

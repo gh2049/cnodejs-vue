@@ -11,3 +11,4 @@ src/config/env.js
 /index_prod.html
 /AccessToken.js
 .jshintrc
+todo.md

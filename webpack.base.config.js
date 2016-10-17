@@ -1,11 +1,9 @@
-
 var path = require('path');
 var webpack = require('webpack');
-
 module.exports = {
     // 入口
     entry: {
-        main: './src/main',
+        main: ['./src/main'],
         vendors: ['vue', 'vue-router']
     },
     // 输出
@@ -26,7 +24,7 @@ module.exports = {
     },
     // 转es5
     babel: {
-        presets: ['es2015'],
+        presets: ['es2015', 'stage-3'],
         plugins: ['transform-runtime']
     },
     resolve: {
@@ -35,8 +33,7 @@ module.exports = {
         // 别名，可以直接使用别名来代表设定的路径以及其他
         alias: {
             filter: path.join(__dirname, './src/filters'),
-            components: path.join(__dirname, './src/components'),
-            iviewStyle: path.join(__dirname,'./node_modules/iview/dist/styles/iview.css')
+            components: path.join(__dirname, './src/components')
         }
     },
     plugins: [

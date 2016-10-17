@@ -1,4 +1,3 @@
-
 <template id="main">
     <div class="content">
         <topictab></topictab>
@@ -13,7 +12,6 @@
                             <a href="javascript:;">{{topic.title}}</a>
                         </span>
                     </div>
-                    
                     <div class="last_reply_time" >
                      {{topic.last_reply_at | fromNow}}
                     </div>
@@ -72,7 +70,6 @@
 
                 this.getTopics(queryParams, (topics) => {
                     this.topics = topics
-
                 } )
             }
         },
@@ -84,16 +81,13 @@
 <style scoped lang="less">
 .content{
     box-sizing : border-box;
-
     .topics{
         background-color : #fff;
         .cell{
             display : flex;
             border-top: 1px solid #f0f0f0;
             line-height : 2em;
-            justify-content:space-between;
-
-            
+            justify-content:space-between;            
             .topic_title {
                 text-overflow : ellipsis;
                 overflow: hidden;

@@ -14,7 +14,7 @@
 	}
 </style>
 <script>
-	import { accessToken } from "../../accessToken"; //这是我自己的token
+	import { accessToken } from "../../accessToken"; //本人的token
 
 	export  default {
 		data () {

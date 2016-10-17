@@ -6,9 +6,8 @@
         .content-view {
             padding: 10px 100px;
             background-color: #fff;
-
             @media screen and (max-width:960px) {
-                padding: 0 0 ; 
+                padding: 0 0; 
             }
         }
     }
@@ -24,24 +23,7 @@
 </template>
 <script>
     import navbar from "./nav";
-    import {LoadingBar} from "iview";
     export default {
-        beforeEach () {     
-            LoadingBar.start()
-        },
-        data () {
-            LoadingBar.finish()
-            return {}
-        },
-        ready () {
-
-        },
-        beforeDestroy () {
-
-        },
-        methods: {
-
-        },
         http: {
             root: '/root',
             headers: {

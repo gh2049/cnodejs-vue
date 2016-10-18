@@ -49,7 +49,7 @@
 		<ul>
 			<li v-for="reply in topic.replies" class="reply_block">
 				<div>
-					<img :src="reply.author.avatar_url" alt="" class="avatar">
+					<img :src="reply.author.avatar_url" class="avatar" v-link="{name:'user',params:{loginname:reply.author.loginname}}">
 					<span class="reply_msg">
 						{{reply.author.loginname}} {{$index+1}}楼 回复 {{reply.create_at | fromNow}}以前
 					</span>	

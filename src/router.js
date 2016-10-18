@@ -14,6 +14,12 @@ const routers = {
          component (resolve){
             require(['./views/login.vue'],resolve);
         }
+    },
+    'user/:loginname' : {
+        name : 'user',
+        component (resolve) {
+            require(['./views/user.vue'],resolve);
+        }
     }
 };
 export default routers;

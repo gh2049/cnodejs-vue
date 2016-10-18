@@ -5,6 +5,7 @@
     min-width : 40px;
     height : 40px;
     border-radius: 5px;
+    cursor: pointer;
 }
 body{
 	font-family: "Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti,sans-serif!important;

@@ -5,8 +5,12 @@ export function fromNow (time) {
       return pluralize(~~(between / 60), ' minute')
     } else if (between < 86400) {
       return pluralize(~~(between / 3600), ' hour')
-    } else {
+    } else if (between < 86400 * 30) {
       return pluralize(~~(between / 86400), ' day')
+    } else if (between < 86400 * 30 * 12) {
+      return pluralize(~~(between / (86400 * 30)), ' month')
+    } else {
+      return pluralize(~~(between / (86400 * 30 * 12)), ' year')
     }
 }
 
@@ -29,6 +33,6 @@ export function getTab (tab) {
         case 'ask' :
           return '问答'
         default : 
-          return '未知'
+          return ''
     }
 }

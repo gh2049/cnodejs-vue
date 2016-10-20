@@ -1,8 +1,13 @@
 <style>
+	
 	.topic_header {
 		border-bottom:1px #f0f0f0 solid;
 		font-size: 1.5em;
 		padding: 5px 5px;
+	}
+	.topic_header + div {
+		font-size: 14px;
+		color : inherit;
 	}
 	.topic_content {
 		padding: 10px 0;
@@ -17,12 +22,15 @@
 		height:40px; 
 		line-height:40px; 
 		overflow:hidden; 
+		font-size: 14px;
+	}
+	[v-cloak] {
+	  display: none;
 	}
 </style>
 <template>
-	<div v-if="show">
-		
-	<header>
+	<div v-if="topic.title">
+	<header v-cloak>
 		<h2 class="topic_header">
 			{{topic.title}}
 		</h2>
@@ -31,7 +39,10 @@
 				发布于 {{topic.create_at | fromNow}} 前
 			</span>
 			<span> 
-				作者 {{topic.author ? topic.author.loginname : ''}}
+				 作者
+				 <a v-link="{name:'user',params:{loginname:(topic.author ? topic.author.loginname : '')}}">
+				 	{{topic.author ? topic.author.loginname : ''}}
+				 </a>
 			</span>
 			<span>
 				{{topic.visit_count}}次浏览
@@ -51,7 +62,9 @@
 				<div>
 					<img :src="reply.author.avatar_url" class="avatar" v-link="{name:'user',params:{loginname:reply.author.loginname}}">
 					<span class="reply_msg">
-						{{reply.author.loginname}} {{$index+1}}楼 回复 {{reply.create_at | fromNow}}以前
+						<a v-link="{name:'user',params:{loginname:reply.author.loginname}}">
+							{{reply.author.loginname}}
+						</a> {{$index+1}}楼 回复 {{reply.create_at | fromNow}}以前
 					</span>	
 					
 				</div>
@@ -68,7 +81,7 @@
 		data () {
 			let vm = this
 			return {
-				topicId : 'transition.from.query',
+				topicId : '',
 				topic : {},
 				show : false
 			}

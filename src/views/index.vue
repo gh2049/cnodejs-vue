@@ -4,9 +4,9 @@
     <topiclist :topics="topics"></topiclist>      
     
     <div class="pagination">
-        <button><=</button><button @click="getPage(list)" v-for="list in lists" :class="{'current-page' : currentPage===list}">
+        <button @click="changPage(0)"><=</button><button @click="getPage(list)" v-for="list in lists" :class="{'current-page' : currentPage===list}">
             {{list}}
-        </button><button>=></button>
+        </button><button @click="changPage(1)">=></button>
     </div>
   
 </template>
@@ -39,36 +39,38 @@
                         callback(topics)
                     }, err => {console.log(err)})
             },
-            getPage (val) {              
+            getPage(val) {              
                 this.queryParams.page = val
                 console.log('ok')
                 this.getTopics(this.queryParams, (topics) => {
                     this.topics = topics
                     this.currentPage = val
                     if(val>=3) this.lists = [val-2,val-1,val,val+1,val+2]
-                    if(val== (2 ||1)) this.lists =  [1,2,3,4,5]
-                    
+                    if(val== (2 ||1)) this.lists =  [1,2,3,4,5]     
                 })    
+            },
+            changPage(num) {
+                if (num === 0) {
+                    if (this.currentPage === 1) return
+                    this.getPage(this.currentPage - 1)
+                } else if (num === 1) {
+                    this.getPage(this.currentPage + 1)
+                }
             }
         },
         ready () {
             let message = sessionStorage.getItem('topics')
-            message ?console.log('ready') :this.getTopics(this.queryParams,topics => {
-                this.topics = topics
-            })
+            message 
+                ?console.log('ready') 
+                :this.getTopics(this.queryParams,topics => {
+                    this.topics = topics
+                })
             this.topics = JSON.parse(message)
         },
         events : {
             "changeTab" : function (tab) {
                 this.queryParams.tab = tab
-                var queryParams = {
-                    page : this.queryParams.page,
-                    tab : this.queryParams.tab,
-                    limit : this.queryParams.limit,
-                    mdrender : this.queryParams.mdrender
-                }
-
-                this.getTopics(queryParams, (topics) => {
+                this.getTopics(this.queryParams, (topics) => {
                     this.topics = topics
                 } )
             }

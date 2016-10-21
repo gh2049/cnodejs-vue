@@ -65,8 +65,7 @@
 						<a v-link="{name:'user',params:{loginname:reply.author.loginname}}">
 							{{reply.author.loginname}}
 						</a> {{$index+1}}楼 回复 {{reply.create_at | fromNow}}以前
-					</span>	
-					
+					</span>					
 				</div>
 				<div class="markdown-body">
 					{{{reply.content}}}

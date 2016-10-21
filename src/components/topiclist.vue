@@ -11,7 +11,7 @@
                     </span>
                 </div>
                 <div class="last_reply_time" >
-                 {{topic.last_reply_at | fromNow}}
+                 {{topic.last_reply_at | fromNow}}前
                 </div>
             </div>
         </li>

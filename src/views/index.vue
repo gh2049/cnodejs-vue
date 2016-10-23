@@ -1,19 +1,15 @@
 <template id="main" v-cloak>
-
-    <topictab></topictab>
-    <topiclist :topics="topics"></topiclist>      
-    
+    <navbar></navbar>
+    <topiclist :topics="topics"></topiclist>     
     <div class="pagination">
         <button @click="changPage(0)"><=</button><button @click="getPage(list)" v-for="list in lists" :class="{'current-page' : currentPage===list}">
             {{list}}
         </button><button @click="changPage(1)">=></button>
     </div>
-  
 </template>
 <script>
-    
-    import topictab from "../components/topictab";
     import topiclist from "../components/topiclist";
+    import navbar from "../components/nav";
 
     export default {
         data () {
@@ -76,7 +72,7 @@
             }
         },
         components:{
-            topictab,topiclist
+            topiclist,navbar
         }
     }
 </script>

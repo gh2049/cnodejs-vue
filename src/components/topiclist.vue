@@ -5,7 +5,7 @@
                 <img :src="topic.author.avatar_url" alt="avatar" class="avatar" v-link="{name:'user',params:{loginname:topic.author.loginname}}">
                 
                 <div class="topic_title" v-link="{name:'topic',params:{id:topic.id}}">
-                    <span>{{topic.tab | getTab}}</span>
+                    <span class="topic_title_tab">{{topic.tab | getTab}}</span>
                     <span class="topic_title_content">
                         <a href="javascript:;">{{topic.title}}</a>
                     </span>
@@ -37,7 +37,7 @@
                 text-overflow : ellipsis;
                 overflow: hidden;
                 white-space:nowrap;
-                text-indent : 1.5em;
+                text-indent : 0.5em;
                 font-size : 14px;
                 @media screen and (max-width:960px) {
                     text-indent : 0.8em;
@@ -53,8 +53,11 @@
                 a {
                     color: initial;
                 }
-                span {
-
+                .topic_title_tab {
+                    display: inline-block;
+                    font-size: 13px;
+                    text-align: center;
+                    width: 47px;
                 }
             }
             .last_reply_time{

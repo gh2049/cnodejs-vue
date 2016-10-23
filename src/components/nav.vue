@@ -1,22 +1,41 @@
 <template>
-	<div class="header" v-link="{path: '/index' }">
+	<header>
 		<h1 style="display:none">cnodejs</h1>
-		<img src="../images/cnodejs.svg">
-	</div>
+		<img src="../images/cnodejs.svg" v-link="{path: '/index' }">
+		<topictab></topictab>
+	</header>
+	
 </template>
 
+<script>
+	import topictab from "./topictab";
+
+	export default {
+		components: {
+			topictab
+		}
+	}
+</script>
+
 <style scoped lang="less">
-	.header {
-		cursor : pointer;
+	header {
 		text-align: center;
 		background-color: #444;
 		img {
-			width: 200px;
+			  width: 150px;
 		    height: auto;
 		    max-width : 100%;
 		    vertical-align: middle;
 		    border: 0;
 		}
+		@media screen and (min-width:720px) {
+    	position: fixed;
+    	left: 0;
+    	top: 0;
+   	 	bottom: 0;
+    	width: 240px;
+		  padding: 75px 0;
+    }
 	}
 
 </style>

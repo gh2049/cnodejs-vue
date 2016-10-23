@@ -1,5 +1,7 @@
 <style>
-	
+	.topic_wrap {
+		background-color: #fdfdfd;
+	}
 	.topic_header {
 		border-bottom:1px #f0f0f0 solid;
 		font-size: 1.5em;
@@ -27,52 +29,61 @@
 	[v-cloak] {
 	  display: none;
 	}
+
 </style>
 <template>
-	<div v-if="topic.title">
-	<header v-cloak>
-		<h2 class="topic_header">
-			{{topic.title}}
-		</h2>
-		<div>
-			<span>
-				发布于 {{topic.create_at | fromNow}} 前
-			</span>
-			<span> 
-				 作者
-				 <a v-link="{name:'user',params:{loginname:(topic.author ? topic.author.loginname : '')}}">
-				 	{{topic.author ? topic.author.loginname : ''}}
-				 </a>
-			</span>
-			<span>
-				{{topic.visit_count}}次浏览
-			</span>
-			<span>
-				来自 {{topic.tab | getTab}}
-			</span>
+
+	<div class="topic_wrap" >
+		
+		<article v-if="topic.title">
+		
+		<header v-if="topic.title">
+			<h2 class="topic_header">
+				{{topic.title}}
+			</h2>
+			<div>
+				<span>
+					发布于 {{topic.create_at | fromNow}} 前
+				</span>
+				<span> 
+					 作者
+					 <a v-link="{name:'user',params:{loginname:(topic.author ? topic.author.loginname : '')}}">
+					 	{{topic.author ? topic.author.loginname : ''}}
+					 </a>
+				</span>
+				<span>
+					{{topic.visit_count}}次浏览
+				</span>
+				<span>
+					来自 {{topic.tab | getTab}}
+				</span>
+			</div>
+		</header>
+		
+		<div class="markdown-body  topic_content">
+			<div>{{{topic.content}}}</div>
 		</div>
-	</header>
-	<div class="markdown-body  topic_content">
-		<div>{{{topic.content}}}</div>
-	</div>
-	<div class="comments">
-		<div>{{getLength()}} 回复</div>
-		<ul>
-			<li v-for="reply in topic.replies" class="reply_block">
-				<div>
-					<img :src="reply.author.avatar_url" class="avatar" v-link="{name:'user',params:{loginname:reply.author.loginname}}">
-					<span class="reply_msg">
-						<a v-link="{name:'user',params:{loginname:reply.author.loginname}}">
-							{{reply.author.loginname}}
-						</a> {{$index+1}}楼 回复 {{reply.create_at | fromNow}}以前
-					</span>					
-				</div>
-				<div class="markdown-body">
-					{{{reply.content}}}
-				</div>
-			</li>
-		</ul>
-	</div>
+		<div class="comments" v-if="topic.title">
+			<div>{{getLength()}} 回复</div>
+			<ul>
+				<li v-for="reply in topic.replies" class="reply_block">
+					<div>
+						<img :src="reply.author.avatar_url" class="avatar" v-link="{name:'user',params:{loginname:reply.author.loginname}}">
+						<span class="reply_msg">
+							<a v-link="{name:'user',params:{loginname:reply.author.loginname}}">
+								{{reply.author.loginname}}
+							</a> {{$index+1}}楼 回复 {{reply.create_at | fromNow}}以前
+						</span>					
+					</div>
+					<div class="markdown-body">
+						{{{reply.content}}}
+					</div>
+				</li>
+			</ul>
+		</div>
+	
+	</article>
+	
 	</div>
 </template>
 <script>
@@ -105,7 +116,7 @@
 	                        console.log('err',topicContent)
 		    		    }
 		    	})
-            }
+      }
 		}
 	}
 </script>

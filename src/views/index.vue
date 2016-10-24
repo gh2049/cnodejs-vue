@@ -1,11 +1,14 @@
-<template id="main" v-cloak>
-    <navbar></navbar>
-    <topiclist :topics="topics"></topiclist>     
-    <div class="pagination">
-        <button @click="changPage(0)"><=</button><button @click="getPage(list)" v-for="list in lists" :class="{'current-page' : currentPage===list}">
-            {{list}}
-        </button><button @click="changPage(1)">=></button>
+<template v-cloak>
+    <div id="main">
+        <navbar></navbar>
+        <topiclist :topics="topics"></topiclist>     
+        <div class="pagination">
+            <button @click="changPage(0)"><=</button><button @click="getPage(list)" v-for="list in lists" :class="{'current-page' : currentPage===list}">
+                {{list}}
+            </button><button @click="changPage(1)">=></button>
+        </div>
     </div>
+    
 </template>
 <script>
     import topiclist from "../components/topiclist";
@@ -80,6 +83,7 @@
 [v-cloak] {
   display: none;
 }
+
 .pagination {
     padding: 5px 5px;
 }
@@ -108,4 +112,11 @@
 .current-page {
     color:#93b94d;
 }
+
+@media screen and (min-width:720px) {
+    #main{
+        padding-left:240px !important; 
+    }         
+}
+
 </style>

@@ -28,6 +28,7 @@
 <style lang="less">
     .topics{
         background-color : #fff;
+        
         .cell{
             display : flex;
             border-top: 1px solid #f0f0f0;

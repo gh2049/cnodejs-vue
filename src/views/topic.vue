@@ -1,7 +1,9 @@
 <style>
 	.topic_wrap {
 		background-color: #fdfdfd;
+		margin: 0 auto;
 	}
+	
 	.topic_header {
 		border-bottom:1px #f0f0f0 solid;
 		font-size: 1.5em;

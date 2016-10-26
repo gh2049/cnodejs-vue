@@ -1,5 +1,6 @@
 <template v-cloak>
     <div id="main">
+        
         <navbar></navbar>
         <topiclist :topics="topics"></topiclist>     
         <div class="pagination">
@@ -7,8 +8,20 @@
                 {{list}}
             </button><button @click="changPage(1)">=></button>
         </div>
-    </div>
     
+        <div id="mask" v-show="isloading">
+            <div class="bubblingG">
+                <span id="bubblingG_1">
+                </span>
+                <span id="bubblingG_2">
+                </span>
+                <span id="bubblingG_3">
+                </span>
+            </div>
+        </div>
+    
+    </div>
+
 </template>
 <script>
     import topiclist from "../components/topiclist";
@@ -25,18 +38,26 @@
                 },
                 topics : [],
                 lists : [1,2,3,4,5],
-                currentPage : 1
+                currentPage : 1,
+                isloading : false
             }
         },
-
         methods : {
             getTopics(query, callback){
+                this.isloading = true
                 this.$http.get('https://cnodejs.org/api/v1/topics',{params : query } )
-                    .then(response => {
-                        let topics = response.data.data
-                        sessionStorage.topics = JSON.stringify(topics)
-                        callback(topics)
-                    }, err => {console.log(err)})
+                    .then(
+                        response => {
+                            let topics = response.data.data
+                            sessionStorage.topics = JSON.stringify(topics)
+                            this.isloading = false
+                            callback(topics)
+                        }, 
+                        err => {
+                            console.error(err)
+                            this.isloading = false
+                        }  
+                    )
             },
             getPage(val) {              
                 this.queryParams.page = val
@@ -60,7 +81,7 @@
         ready () {
             let message = sessionStorage.getItem('topics')
             message 
-                ?console.log('ready') 
+                ?console.log('ready')
                 :this.getTopics(this.queryParams,topics => {
                     this.topics = topics
                 })
@@ -80,6 +101,8 @@
     }
 </script>
 <style scoped >
+@import '../styles/loading.css'
+
 [v-cloak] {
   display: none;
 }

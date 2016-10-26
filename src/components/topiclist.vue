@@ -28,6 +28,9 @@
 <style lang="less">
     .topics{
         background-color : #fff;
+        @media screen and (max-width: 720px) {
+            padding-top : 50px;
+        }
         
         .cell{
             display : flex;

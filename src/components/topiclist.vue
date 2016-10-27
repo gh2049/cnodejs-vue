@@ -2,7 +2,7 @@
     <ul class="topics">
         <li v-for="topic in topics">
             <div class="cell">
-                <img :src="topic.author.avatar_url" alt="avatar" class="avatar" v-link="{name:'user',params:{loginname:topic.author.loginname}}">
+                <img :src="topic.author.avatar_url"  class="avatar" v-link="{name:'user',params:{loginname:topic.author.loginname}}" onerror="this.src=''">
                 
                 <div class="topic_title" v-link="{name:'topic',params:{id:topic.id}}">
                     <span class="topic_title_tab">{{topic.tab | getTab}}</span>

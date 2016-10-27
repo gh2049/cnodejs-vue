@@ -1,6 +1,6 @@
 <template>
 	<i class="iconfont icon-menu" @click="isMenuOpen = !isMenuOpen"></i>
-	<div class="navtab" :class="{close:!isMenuOpen}" >
+	<div class="navtab" :class="{open:!isMenuOpen}" >
 		<p @click="choose('all')">全部</p>
 		<p @click="choose('good')">精华</p>
 		<p @click="choose('share')">分享</p>
@@ -13,15 +13,14 @@
 	.icon-menu {
 		float: right;
 		padding-right: 15px;
-		padding-top: 5px; 
+		/*padding-top: 5px; */
 	}
 
 	.navtab {
 		margin-top: 1em;
-		transition: 0.3s height cubic-bezier(.28,1.51,.29,1.51);
 		height : 100%;
-		background : #fff;
-		visibility : visible;
+		display: none;
+		visibility : hidden;
 		p {
 			margin-top: 1em;
 			margin-bottom: 1em;
@@ -31,9 +30,9 @@
 			cursor:pointer;
 		}
 	}
-	.navtab.close {
-		height: 1px;
-		visibility: hidden;
+	.navtab.open {
+		visibility: visible;
+		display: block;
 	}
 	@media screen and (min-width: 720px) {
 		.icon-menu{
@@ -43,6 +42,7 @@
 	@media screen and (min-width: 720px) {
 		.navtab{
 			visibility : visible;
+			display: block;
 		}
 	}
 </style>

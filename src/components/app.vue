@@ -2,12 +2,10 @@
     @import '../styles/common.css';
     .routerview{
         box-sizing: border-box;
-        background-color: #f0f0f0;
         height: 100%;
         
         .content-view {
             padding: 0 0;
-            background-color: #eee;
             height: 100%;    
             .topic_wrap {
                 @media screen and (min-width:720px) and (max-width:1120px) {

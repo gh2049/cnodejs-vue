@@ -7,8 +7,6 @@
         .content-view {
             padding: 0 0;
             height: 100%;    
-            
-
         }
     }
     .fade-transition {

@@ -40,12 +40,10 @@
                 text-overflow : ellipsis;
                 overflow: hidden;
                 white-space:nowrap;
-                text-indent : 0.5em;
                 font-size : 14px;
                 width : 500px;
                 flex-grow : 2;
                 .topic_title_content {
-                    padding-left : 1em;
                     line-height : 40px;
                     font-size : 15px;
                     white-space:nowrap;

@@ -29,9 +29,8 @@
     .topics{
         background-color : #fff;
         @media screen and (max-width: 720px) {
-            padding-top : 50px;
-        }
-        
+            padding-top : 36px;
+        }       
         .cell{
             display : flex;
             border-top: 1px solid #f0f0f0;
@@ -43,9 +42,6 @@
                 white-space:nowrap;
                 text-indent : 0.5em;
                 font-size : 14px;
-                @media screen and (max-width:960px) {
-                    text-indent : 0.8em;
-                }
                 width : 500px;
                 flex-grow : 2;
                 .topic_title_content {
@@ -59,7 +55,7 @@
                 }
                 .topic_title_tab {
                     display: inline-block;
-                    font-size: 13px;
+                    font-size: 12px;
                     text-align: center;
                     width: 47px;
                 }

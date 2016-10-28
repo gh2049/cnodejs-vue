@@ -7,17 +7,7 @@
         .content-view {
             padding: 0 0;
             height: 100%;    
-            .topic_wrap {
-                @media screen and (min-width:720px) and (max-width:1120px) {
-                    max-width: 640px;            
-                }
-            }
-            .topic_wrap {
-                @media screen and (min-width:1120px) {
-                    margin-right:240px;               
-                    margin-left:240px;               
-                }
-            }
+            
 
         }
     }

@@ -31,7 +31,17 @@
 	[v-cloak] {
 	  display: none;
 	}
-
+  @media screen and (min-width:720px) and (max-width:1200px) {
+		.topic_wrap {
+        max-width: 560px;            
+    }
+	}
+  @media screen and (min-width:1200px) {
+		.topic_wrap {
+        margin-right:320px;               
+        margin-left:320px;               
+    }
+	}
 </style>
 <template>
 
@@ -65,7 +75,7 @@
 		<div class="markdown-body  topic_content">
 			<div>{{{topic.content}}}</div>
 		</div>
-		<div class="comments" v-if="topic.title">
+		<footer class="comments" v-if="topic.title">
 			<div>{{getLength()}} 回复</div>
 			<ul>
 				<li v-for="reply in topic.replies" class="reply_block">
@@ -82,7 +92,7 @@
 					</div>
 				</li>
 			</ul>
-		</div>
+		</footer>
 	
 	</article>
 	
@@ -110,13 +120,13 @@
 				this.$http.get('https://cnodejs.org/api/v1/topic/'+vm.topicId)
 					.then (topicContent => {
 						if(topicContent && topicContent.data){
-	                		vm.topic = topicContent.data.data
-	                		vm.show = true
-	                		sessionStorage.topic = JSON.stringify(vm.topic)
-	                    }
-	                    else{
-	                        console.log('err',topicContent)
-		    		    }
+          		vm.topic = topicContent.data.data
+          		vm.show = true
+          		sessionStorage.topic = JSON.stringify(vm.topic)
+              }
+              else{
+                  console.log('err',topicContent)
+    		    }
 		    	})
       }
 		}

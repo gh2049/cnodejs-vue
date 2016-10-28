@@ -40,6 +40,7 @@
                 lists : [1,2,3,4,5],
                 currentPage : 1,
                 isloading : false
+                
             }
         },
         methods : {
@@ -66,7 +67,7 @@
                     this.topics = topics
                     this.currentPage = val
                     if(val>=3) this.lists = [val-2,val-1,val,val+1,val+2]
-                    if(val== (2 ||1)) this.lists =  [1,2,3,4,5]     
+                    if(val== (2 ||1)) this.lists =  [1,2,3,4,5]
                 })    
             },
             changPage(num) {
@@ -80,19 +81,22 @@
         },
         ready () {
             let message = sessionStorage.getItem('topics')
-            message 
-                ?console.log('ready')
-                :this.getTopics(this.queryParams,topics => {
-                    this.topics = topics
-                })
-            this.topics = JSON.parse(message)
+            message
+                ? console.log('ready')
+                : this.getTopics(this.queryParams,topics => {
+                        this.topics = topics
+                    })
+                this.topics = JSON.parse(message)
         },
         events : {
             "changeTab" : function (tab) {
                 this.queryParams.tab = tab
+                this.queryParams.page = 1
                 this.getTopics(this.queryParams, (topics) => {
                     this.topics = topics
-                } )
+                    this.currentPage = 1
+                    this.isloading = false
+                })
             }
         },
         components:{

@@ -1,4 +1,4 @@
-用 `vue` 重写的 [cnodejs](https://cnodejs.org)，使用了 `vue-resoure && vue-router`
+用 vue1.X 重写的 [cnodejs](https://cnodejs.org)
 
 ```
 起步

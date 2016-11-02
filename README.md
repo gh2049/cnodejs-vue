@@ -1,4 +1,4 @@
-用 vue1.X 重写的 [cnodejs](https://cnodejs.org)
+用 vue1.x 重写的 [cnodejs](https://cnodejs.org)
 
 ```
 起步

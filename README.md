@@ -10,7 +10,7 @@ npm run dev
 发布
 npm run build
 ```
-## 项目结构
+## 项目结构（感谢[vue-vueRouter-webpack](https://cnodejs.org)提供的脚手架）
 ```
 │  .gitignore          # 忽略文件,比如 node_modules
 │  package.json        # 项目配置
@@ -61,4 +61,3 @@ npm run build
          │
          └─ index.ejs # 默认的html模板
 ```
-## 感谢[vue-vueRouter-webpack](https://cnodejs.org)提供的脚手架

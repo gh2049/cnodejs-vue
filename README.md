@@ -1,5 +1,5 @@
-用 vue1.x 重写的 [cnodejs](https://cnodejs.org)
-
+### 用 vue1.x 重写的 [cnodejs](https://cnodejs.org)
+##使用
 ```
 起步
 npm init
